@@ -299,17 +299,7 @@ button,.tab,.role,.feat,.list-card,.chip,.more,.iconbtn,.bell{touch-action:manip
 .list-card .title{font-family:'Archivo';font-weight:700;font-size:15px;color:var(--hitam);display:flex;align-items:center;gap:8px;}
 .list-card .meta{font-size:12px;color:var(--teks-muted);margin-top:4px;line-height:1.4;}
 
-/* ============ ONBOARDING ============ */
-#v-onboarding{background:#FFFFFF;padding:calc(var(--safe-top) + 34px) 26px calc(var(--safe-bottom) + 26px);display:flex;flex-direction:column;justify-content:center;}
-#v-onboarding .logo{
-  width:92px;height:92px;border-radius:20px;background:var(--hijau);margin:0 auto;
-  display:flex;align-items:center;justify-content:center;font-size:48px;
-  animation:float 3s ease-in-out infinite;
-}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
-#v-onboarding h1{font-family:'Archivo';text-align:center;font-weight:800;font-size:32px;color:var(--hitam);margin-top:20px;letter-spacing:-0.4px;}
-#v-onboarding .tagline{text-align:center;font-size:14.5px;color:var(--teks-muted);margin-top:10px;line-height:1.55;}
-#v-onboarding .q{margin:34px 0 15px;font-family:'Archivo';font-weight:800;font-size:15px;color:var(--hitam);}
+/* ============ ROLE CARD (dipakai halaman Pilih Peran) ============ */
 .role{
   background:#fff;border:1.5px solid var(--line);border-radius:var(--r-md);
   padding:16px;display:flex;gap:14px;align-items:center;margin-bottom:12px;
@@ -320,7 +310,6 @@ button,.tab,.role,.feat,.list-card,.chip,.more,.iconbtn,.bell{touch-action:manip
 .role .txt h4{font-family:'Archivo';font-weight:800;font-size:14.5px;color:var(--hitam);}
 .role .txt p{font-size:12px;color:var(--teks-muted);margin-top:2px;}
 .role .chev{margin-left:auto;color:var(--abu);font-size:20px;font-weight:700;}
-#v-onboarding .foot{margin-top:auto;padding-top:24px;text-align:center;font-size:12px;color:var(--teks-muted);}
 
 /* ============ SPLASH / WELCOME ============ */
 #v-splash{
@@ -461,7 +450,7 @@ button,.tab,.role,.feat,.list-card,.chip,.more,.iconbtn,.bell{touch-action:manip
 /* ============ VERIFIKASI ADMIN ============ */
 #v-adminpin{padding:calc(var(--safe-top) + 30px) 26px calc(var(--safe-bottom) + 26px);display:flex;flex-direction:column;background:#FFFFFF;}
 .pin-ico{width:66px;height:66px;border-radius:50%;background:var(--daun-muda);color:var(--hijau);display:flex;align-items:center;justify-content:center;margin:14px auto 0;}
-#v-adminpin h2{font-family:'Archivo';text-align:center;font-weight:800;font-size:21px;color:var(--hitam);margin-top:16px;letter-spacing:-0.3px;}
+#v-adminpin h2{font-family:'Archivo';text-align:center;font-weight:800;font-size:21px;color:var(--hijau-tua);margin-top:16px;letter-spacing:-0.3px;}
 #v-adminpin .psub{text-align:center;font-size:13px;color:var(--teks-muted);margin-top:8px;line-height:1.55;padding:0 12px;}
 .pin-row{display:flex;gap:11px;justify-content:center;margin:26px 0 4px;}
 .pin-box{
@@ -486,7 +475,7 @@ button,.tab,.role,.feat,.list-card,.chip,.more,.iconbtn,.bell{touch-action:manip
 
 /* ============ FORM ============ */
 .field{margin-top:22px;}
-.field-label{font-family:'Archivo';font-weight:700;font-size:13.5px;color:var(--hitam);display:block;margin-bottom:11px;}
+.field-label{font-family:'Archivo';font-weight:700;font-size:13.5px;color:var(--hijau-tua);display:block;margin-bottom:11px;}
 .loc-box{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:var(--r-sm);padding:15px;font-size:14px;font-weight:600;color:var(--hitam);}
 .loc-box .chg{margin-left:auto;color:var(--hijau);font-size:12.5px;font-weight:700;cursor:pointer;}
 
@@ -602,6 +591,43 @@ button,.tab,.role,.feat,.list-card,.chip,.more,.iconbtn,.bell{touch-action:manip
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
 }
+/* ============================================================
+   TONE & THEME SELARAS (dengan halaman Pilih Peran)
+   Header transparan/putih, judul --hijau-tua, aksen hijau,
+   tanpa garis border tebal pada appbar & kartu.
+   Berlaku untuk halaman lama: Riwayat, Kontribusiku, Profil,
+   Panduan, Lapor, Konfirmasi, Rute, Bukti, Dashboard, Detail.
+   ============================================================ */
+#v-riwayat .appbar,#v-kontribusi .appbar,#v-profil .appbar,#v-panduan .appbar,
+#v-lapor .appbar,#v-rute .appbar,#v-bukti .appbar,#v-dashboard .appbar,#v-detail .appbar{
+  background:rgba(255,255,255,0.96);border-bottom:none;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+#v-riwayat .appbar .title,#v-kontribusi .appbar .title,#v-profil .appbar .title,#v-panduan .appbar .title,
+#v-lapor .appbar .title,#v-rute .appbar .title,#v-bukti .appbar .title,#v-dashboard .appbar .title,#v-detail .appbar .title{
+  color:var(--hijau-tua);
+}
+#v-riwayat .appbar .title svg,#v-kontribusi .appbar .title svg,#v-profil .appbar .title svg,#v-panduan .appbar .title svg,
+#v-lapor .appbar .title svg,#v-rute .appbar .title svg,#v-bukti .appbar .title svg,#v-dashboard .appbar .title svg,#v-detail .appbar .title svg{
+  color:var(--hijau);
+}
+#v-riwayat .appbar .sub,#v-dashboard .appbar .sub,#v-detail .appbar .sub{color:var(--teks-muted);}
+/* ikon di appbar pakai hijau */
+#v-riwayat .iconbtn,#v-kontribusi .iconbtn,#v-profil .iconbtn,#v-panduan .iconbtn,
+#v-lapor .iconbtn,#v-rute .iconbtn,#v-bukti .iconbtn,#v-dashboard .iconbtn,#v-detail .iconbtn{
+  color:var(--hijau-tua);
+}
+/* kartu tanpa border tebal, bayangan halus */
+#v-riwayat .list-card,#v-kontribusi .list-card,#v-profil .list-card,#v-panduan .list-card,
+#v-rute .list-card,#v-dashboard .list-card,#v-lapor .card,#v-konfirmasi .card,
+#v-profil .card,#v-kontribusi .card{
+  border-color:transparent;box-shadow:0 1px 3px rgba(18,32,26,0.06);
+}
+/* judul seksi hijau tua */
+#v-riwayat .section-title,#v-kontribusi .section-title,#v-profil .section-title,#v-panduan .section-title,
+#v-rute .section-title,#v-dashboard .section-title{
+  color:var(--hijau-tua);
+}
 </style>
 </head>
 <body>
@@ -679,7 +705,7 @@ button,.tab,.role,.feat,.list-card,.chip,.more,.iconbtn,.bell{touch-action:manip
       <div class="pad-top"></div>
       <header class="appbar">
         <div class="bar">
-          <button class="iconbtn" onclick="show('v-splash',true)" aria-label="Kembali"><svg class="ic" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+          <button class="iconbtn" onclick="tutupPilihPeran()" aria-label="Kembali"><svg class="ic" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
         </div>
       </header>
       <div class="content no-tab">
@@ -795,30 +821,6 @@ button,.tab,.role,.feat,.list-card,.chip,.more,.iconbtn,.bell{touch-action:manip
         <b>Kode demo (sementara)</b><br>
         Angka verifikasi: <b>1234</b>
       </div>
-    </section>
-
-    <!-- ===== ONBOARDING (lama, dipakai untuk "Ganti Peran") ===== -->
-    <section class="view" id="v-onboarding" hidden>
-      <div class="logo"><svg style="width:48px;height:48px;color:#fff" aria-hidden="true"><use href="#i-logo-nyampah"/></svg></div>
-      <h1>NYAMPAH</h1>
-      <p class="tagline">"Peta hidup untuk gang yang<br>truk tidak bisa masuk"</p>
-      <div class="q">Kamu siapa?</div>
-      <div class="role" data-role="warga">
-        <div class="ico"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-user"/></svg></div>
-        <div class="txt"><h4>Warga</h4><p>Lapor tumpukan · lihat peta gang</p></div>
-        <div class="chev"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></div>
-      </div>
-      <div class="role" data-role="udin">
-        <div class="ico"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-truck"/></svg></div>
-        <div class="txt"><h4>Pengangkut Sampah</h4><p>Lihat rute kerja hari ini</p></div>
-        <div class="chev"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></div>
-      </div>
-      <div class="role" data-role="rt">
-        <div class="ico"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-chart"/></svg></div>
-        <div class="txt"><h4>Pengelola (RT / Kelurahan)</h4><p>Data &amp; laporan gang</p></div>
-        <div class="chev"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></div>
-      </div>
-      <div class="foot">Mengganti peran tidak menghapus laporanmu</div>
     </section>
 
     <!-- ===== WARGA: BERANDA (PETA PUSAT) ===== -->
@@ -1033,7 +1035,7 @@ button,.tab,.role,.feat,.list-card,.chip,.more,.iconbtn,.bell{touch-action:manip
               <p id="udinCount2">3 gang untuk diangkut</p>
             </div>
             <button class="bell" id="bellUdin" onclick="bukaNotif('udin')" aria-label="Notifikasi"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg></button>
-            <button class="iconbtn" onclick="show('v-onboarding')" aria-label="Ganti peran"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg></button>
+            <button class="iconbtn" onclick="gantiPeran('v-rute')" aria-label="Ganti peran"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg></button>
           </div>
         </div>
       </header>
@@ -1081,7 +1083,7 @@ button,.tab,.role,.feat,.list-card,.chip,.more,.iconbtn,.bell{touch-action:manip
           <div><div class="title"><svg class="ic ic-sm" style="margin-right:7px" aria-hidden="true"><use href="#i-chart"/></svg>RW 05</div><div class="sub">Ringkasan 30 hari terakhir</div></div>
           <div class="spacer"></div>
           <button class="iconbtn belladm" id="bellAdmin" onclick="bukaNotif('rt')" aria-label="Notifikasi pengelola"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg></button>
-          <button class="iconbtn" onclick="show('v-onboarding')" aria-label="Ganti peran"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg></button>
+          <button class="iconbtn" onclick="gantiPeran('v-dashboard')" aria-label="Ganti peran"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg></button>
         </div>
       </header>
       <div class="content">
@@ -1301,6 +1303,19 @@ function show(id, back){
   if(id==='v-kontribusi'){
     renderKontribusi();
   }
+}
+
+/* ---------- GANTI PERAN (pakai halaman Pilih Peran) ---------- */
+let pilihPeranFrom = 'v-splash';   // asal buka halaman pilih peran
+function gantiPeran(fromId){
+  pilihPeranFrom = fromId || state.activeView || 'v-splash';
+  show('v-pilihperan');
+}
+function tutupPilihPeran(){
+  const dest = (state.role==='warga'||state.role==='udin'||state.role==='rt'||state.role==='admin')
+    ? (pilihPeranFrom && pilihPeranFrom!=='v-splash' ? pilihPeranFrom : 'v-splash')
+    : 'v-splash';
+  show(dest, true);
 }
 
 /* ---------- LOGIN (sementara: email 1234 / sandi 1234) ---------- */
@@ -1665,7 +1680,7 @@ function renderProfil(){
       <div style="flex:1"><div class="title">Mode gelap sore</div><div class="meta">Otomatis setelah jam 6</div></div>
       <span class="badge kompos">Auto</span>
     </div>
-    <div class="list-card" onclick="show('v-onboarding')">
+    <div class="list-card" onclick="gantiPeran('v-profil')">
       <div class="lc-ico" style="background:#FBEAEA"><svg class="ic" aria-hidden="true"><use href="#i-door"/></svg></div>
       <div style="flex:1"><div class="title">Ganti peran</div></div>
       <span style="display:flex;color:var(--abu)"><svg class="ic" aria-hidden="true"><use href="#i-chevron-right"/></svg></span>
