@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYAMPAH - Preview Semua Layar</title>
+<style>
+:root{ --hijau:#2E7D5B; --hijau-tua:#1F5C42; --hitam:#12201A; --teks-muted:#5F6F66; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',system-ui,sans-serif;background:#dfe8e2;color:var(--hitam);padding:28px;}
+h1{font-family:'Archivo';font-weight:800;font-size:22px;margin-bottom:4px;}
+.sub{font-size:13px;color:var(--teks-muted);margin-bottom:6px;line-height:1.6;}
+.sub code{background:#fff;padding:2px 7px;border-radius:6px;font-size:12px;}
+.section-label{font-family:'Archivo';font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--hijau);margin:30px 0 12px;}
+.grid{display:flex;flex-wrap:wrap;gap:22px;}
+.item{width:340px;}
+.item .cap{font-family:'Archivo';font-weight:700;font-size:13px;margin-bottom:8px;}
+.item .cap span{font-weight:500;color:var(--teks-muted);font-size:11.5px;}
+.frame{width:340px;height:720px;border:10px solid #1E2A24;border-radius:34px;overflow:hidden;background:#fff;box-shadow:0 12px 30px rgba(18,32,26,0.18);}
+.frame iframe{width:100%;height:100%;border:0;display:block;}
+</style>
+</head>
+<body>
+
+<h1>NYAMPAH - Preview Semua Layar</h1>
+<p class="sub">Galeri 16 layar dari folder <code>screens/</code>, tiap file mandiri untuk konversi Figma.<br>
+Versi gabungan lengkap: <code>app-mobile.html</code>. Jalankan via server lokal agar iframe termuat: <code>python -m http.server</code>.</p>
+
+<div class="section-label">Onboarding &amp; Auth</div>
+<div class="grid">
+  <div class="item"><div class="cap">01 - Splash <span>(v-splash)</span></div><div class="frame"><iframe src="01-splash.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">02 - Pilih Peran <span>(v-pilihperan)</span></div><div class="frame"><iframe src="02-pilih-peran.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">03 - Login / Daftar <span>(v-auth)</span></div><div class="frame"><iframe src="03-auth.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">04 - Kode Admin <span>(v-adminpin)</span></div><div class="frame"><iframe src="04-admin-pin.html" loading="lazy"></iframe></div></div>
+</div>
+
+<div class="section-label">Warga</div>
+<div class="grid">
+  <div class="item"><div class="cap">05 - Beranda Peta <span>(v-peta)</span></div><div class="frame"><iframe src="05-warga-beranda.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">06 - Riwayat <span>(v-riwayat)</span></div><div class="frame"><iframe src="06-warga-riwayat.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">07 - Kontribusiku <span>(v-kontribusi)</span></div><div class="frame"><iframe src="07-warga-poin.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">08 - Profil <span>(v-profil)</span></div><div class="frame"><iframe src="08-warga-profil.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">09 - Panduan Pilah <span>(v-panduan)</span></div><div class="frame"><iframe src="09-warga-panduan.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">10 - Form Lapor <span>(v-lapor)</span></div><div class="frame"><iframe src="10-warga-lapor.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">11 - Konfirmasi <span>(v-konfirmasi)</span></div><div class="frame"><iframe src="11-warga-konfirmasi.html" loading="lazy"></iframe></div></div>
+</div>
+
+<div class="section-label">Pengangkut Sampah</div>
+<div class="grid">
+  <div class="item"><div class="cap">12 - Rute <span>(v-rute)</span></div><div class="frame"><iframe src="12-pengangkut-rute.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">13 - Foto Bukti <span>(v-bukti)</span></div><div class="frame"><iframe src="13-pengangkut-bukti.html" loading="lazy"></iframe></div></div>
+</div>
+
+<div class="section-label">Pengelola (RT)</div>
+<div class="grid">
+  <div class="item"><div class="cap">14 - Dashboard <span>(v-dashboard)</span></div><div class="frame"><iframe src="14-rt-dashboard.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">15 - Detail Gang <span>(v-detail)</span></div><div class="frame"><iframe src="15-rt-detail.html" loading="lazy"></iframe></div></div>
+  <div class="item"><div class="cap">16 - Kelola Lokasi <span>(v-lokasi)</span></div><div class="frame"><iframe src="16-rt-kelola-lokasi.html" loading="lazy"></iframe></div></div>
+</div>
+
+</body>
+</html>
