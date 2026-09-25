@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/nyampah.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
 <!-- ============================================================
@@ -99,28 +100,10 @@
           </div>
         </div>
 
-        <!-- PETA (pusat beranda) -->
+        <!-- PETA (pusat beranda) - Leaflet interaktif -->
         <div class="map-wrap" id="mapWrap" style="margin-top:18px">
-          <svg class="map-svg" viewBox="0 0 358 260" preserveAspectRatio="xMidYMid slice">
-            <rect width="358" height="260" fill="#E3EDE6"/>
-            <g fill="#D2E2D7">
-              <rect x="10" y="10" width="95" height="62" rx="6"/>
-              <rect x="130" y="10" width="85" height="48" rx="6"/>
-              <rect x="240" y="10" width="108" height="70" rx="6"/>
-              <rect x="10" y="104" width="80" height="70" rx="6"/>
-              <rect x="120" y="114" width="90" height="60" rx="6"/>
-              <rect x="240" y="122" width="108" height="52" rx="6"/>
-              <rect x="10" y="204" width="110" height="48" rx="6"/>
-              <rect x="160" y="204" width="80" height="48" rx="6"/>
-              <rect x="270" y="204" width="78" height="48" rx="6"/>
-            </g>
-            <path d="M108 0 L108 260" stroke="#C6DACD" stroke-width="13" fill="none"/>
-            <path d="M220 0 L220 260" stroke="#C6DACD" stroke-width="11" fill="none"/>
-            <path d="M0 88 L358 88" stroke="#C6DACD" stroke-width="12" fill="none"/>
-            <path d="M0 192 L358 192" stroke="#C6DACD" stroke-width="12" fill="none"/>
-          </svg>
+          <div id="leafletMap" class="leaflet-map" role="application" aria-label="Peta interaktif sebaran tumpukan sampah"></div>
           <div class="map-loc" id="mapLoc">
-            <div class="loco" aria-hidden="true"><svg class="ic"><use href="#i-pin"/></svg></div>
             <div class="t"><h4 id="locName">Gang Pisang</h4><p id="locMeta">8 menit lalu - 12 warga verifikasi</p></div>
             <span class="go" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-chevron-right"/></svg></span>
           </div>
@@ -134,11 +117,8 @@
         <!-- Grid fitur berwarna -->
         <div class="section-title">Aksi Cepat</div>
         <div class="feat-grid">
-          <button class="feat hijau" onclick="keLapor()">
+          <button class="feat hijau wide" onclick="keLapor()">
             <span class="fi"><svg class="ic"><use href="#i-camera"/></svg></span><h4>Lapor Tumpukan</h4><p>10 detik - tanpa akun</p>
-          </button>
-          <button class="feat kompos" onclick="sheetScanQR()">
-            <span class="fi"><svg class="ic"><use href="#i-qr"/></svg></span><h4>Scan QR Gang</h4><p>Lokasi terisi otomatis</p>
           </button>
           <button class="feat pink" onclick="show('v-panduan')">
             <span class="fi"><svg class="ic-fill ic"><use href="#i-recycle"/></svg></span><h4>Panduan Pilah</h4><p>Organik vs plastik</p>
@@ -174,6 +154,7 @@
 
 </div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="../js/app.js"></script>
 <script>
 /* Tampilkan layar ini (dan siapkan datanya). Defensif: aman walau elemen lain tidak ada. */

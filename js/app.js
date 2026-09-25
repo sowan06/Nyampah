@@ -42,8 +42,43 @@ const KRONIS = [
   {id:'G3', name:'Gang Pisang', lapor:47, layanan:'terangkut 24/47 (51%)'},
   {id:'G9', name:'Gang Jambu', lapor:31, layanan:'terangkut 62%'},
 ];
-const STATUS_COLOR = {penuh:'#C0392B', sedang:'#B5820F', bersih:'#2E7D5B'};
+const STATUS_COLOR = {penuh:'#C0392B', sedang:'#B5820F', bersih:'#0E7A4E'};
 const STATUS_LABEL = {penuh:'Penuh', sedang:'Sedang', bersih:'Bersih'};
+
+/* ---------- DETAIL LAPORAN PER GANG (untuk popup "Gang Sekitar") ----------
+   Mock data: titik laporan (patokan dalam gang) + pelapor + waktu + tingkat.
+   Dipakai saat gang diklik -> bottom sheet menampilkan lokasi & dari siapa. */
+const REPORTER_NAMES = ['Bu Yati','Pak Slamet','Bu Rina','Mas Bagas','Bu Sri','Pak Dedi','Bu Wati','Mas Anto','Bu Nur','Pak Joko'];
+const LAPORAN_GANG = {
+  G3:[ {lok:'Depan warung Bu Yati',  oleh:'Bu Yati',    status:'penuh',  menit:8},
+       {lok:'Samping pos ronda',     oleh:'Pak Slamet',  status:'penuh',  menit:26},
+       {lok:'Pertigaan gang 3',      oleh:'Bu Rina',     status:'sedang', menit:74} ],
+  G5:[ {lok:'Belakang masjid',       oleh:'Bu Sri',     status:'sedang', menit:22},
+       {lok:'Depan nomor 12',        oleh:'Mas Anto',    status:'sedang', menit:51} ],
+  G2:[ {lok:'Ujung gang (buntu)',    oleh:'Pak Dedi',   status:'bersih', menit:60},
+       {lok:'Depan nomor 7',         oleh:'Bu Nur',      status:'sedang', menit:180} ],
+  G9:[ {lok:'Dekat TPU',             oleh:'Bu Wati',    status:'penuh',  menit:15},
+       {lok:'Depan kios sayur',      oleh:'Pak Joko',    status:'penuh',  menit:33},
+       {lok:'Tengah gang 9',         oleh:'Mas Bagas',   status:'sedang', menit:120},
+       {lok:'Depan nomor 4',         oleh:'Bu Yati',     status:'sedang', menit:240} ],
+};
+function laporanGang(g){
+  /* gabungkan data mock + laporan nyata pengguna (state.laporan) untuk gang ini */
+  const mock = (LAPORAN_GANG[g.id] || []).map(x=>({...x, sumber:'mock'}));
+  const nyata = state.laporan.filter(r=>r.gang===g.name).map(r=>({
+    lok: (r.sumber==='baru' ? 'Titik baru (GPS warga)' : 'Lokasi dilaporkan'),
+    oleh:'Kamu', status:r.status, menit: Math.max(1, Math.round((Date.now()-r.waktu)/60000)),
+    nyata:true
+  }));
+  return [...nyata, ...mock];
+}
+function waktuMenitLalu(m){
+  if(m<1) return 'baru saja';
+  if(m<60) return m+' menit lalu';
+  const j = Math.round(m/60);
+  if(j<24) return j+' jam lalu';
+  return Math.round(j/24)+ ' hari lalu';
+}
 
 /* ---------- SIKLUS STATUS LAPORAN (NYAMPAH.md 6) ---------- */
 /* menunggu -> diproses -> selesai (ditolak opsional oleh admin) */
@@ -253,6 +288,9 @@ function show(id, back){
   if(id==='v-kontribusi'){
     renderKontribusi();
   }
+  if(id==='v-peta' && nyMap){
+    setTimeout(()=>nyMap.invalidateSize(), 60);
+  }
 }
 
 /* ---------- GANTI PERAN (pakai halaman Pilih Peran) ---------- */
@@ -459,32 +497,69 @@ function setRole(role){
   refreshNotifBadge();
 }
 
-/* ---------- PETA ---------- */
+/* ---------- PETA (Leaflet interaktif) ---------- */
+let nyMap = null, nyMarkers = {}, nyYouMarker = null;
+function initMap(){
+  if(nyMap || typeof L === 'undefined') return;
+  const el = document.getElementById('leafletMap');
+  if(!el) return;
+  nyMap = L.map(el, {
+    zoomControl:false, attributionControl:true,
+    center:[-6.9731, 110.4090], zoom:16, zoomSnap:0.5,
+    scrollWheelZoom:false, tap:true
+  });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom:19, attribution:'&copy; OpenStreetMap'
+  }).addTo(nyMap);
+  /* titik "kamu di sini" */
+  nyYouMarker = L.marker([-6.9725, 110.4083], {
+    icon: L.divIcon({className:'', html:'<div class="you-dot"></div>', iconSize:[22,22], iconAnchor:[11,11]}),
+    interactive:false
+  }).addTo(nyMap);
+}
 function renderPins(newId){
-  const wrap = document.getElementById('mapWrap');
-  wrap.querySelectorAll('.pin-abs,.you-dot').forEach(e=>e.remove());
+  initMap();
+  if(!nyMap){
+    /* fallback: jika Leaflet gagal dimuat, tetap tampilkan kartu lokasi */
+    renderTip(GANGS.find(x=>x.id===state.tipGang) || GANGS[0]);
+    return;
+  }
+  /* bersihkan marker lama */
+  Object.values(nyMarkers).forEach(m=>nyMap.removeLayer(m));
+  nyMarkers = {};
+
   GANGS.forEach((g,i)=>{
-    const el = document.createElement('div');
-    el.className = 'pin-abs' + (newId===g.id?' newPin':'');
-    el.style.left = g.x+'px'; el.style.top = g.y+'px';
-    el.innerHTML = pinSVG(STATUS_COLOR[g.status], String(i+1));
-    el.setAttribute('aria-label', g.name + ' - ' + STATUS_LABEL[g.status]);
-    el.onclick = ()=>pilihPinById(g.id);
-    wrap.appendChild(el);
+    const icon = L.divIcon({
+      className:'ny-pin'+(newId===g.id?' newPin':''),
+      html: pinSVG(STATUS_COLOR[g.status], String(i+1)),
+      iconSize:[34,42], iconAnchor:[17,42], popupAnchor:[0,-38]
+    });
+    const m = L.marker([g.lat, g.lng], {icon, title:g.name, alt:g.name+' - '+STATUS_LABEL[g.status]}).addTo(nyMap);
+    m.on('click', ()=>pilihPinById(g.id));
+    m.bindTooltip(g.name, {direction:'top', offset:[0,-36]});
+    nyMarkers[g.id] = m;
   });
-  /* titik ad-hoc: pin bergaris putus-putus (belum resmi) */
+
+  /* pin ad-hoc (belum resmi, lat/lng titik) */
   state.lokasiAdhoc.forEach(a=>{
-    const el = document.createElement('div');
-    el.className = 'pin-abs adhoc' + (newId===a.id?' newPin':'');
-    el.style.left = (a.x||160)+'px'; el.style.top = (a.y||150)+'px';
-    el.innerHTML = pinAdhocSVG();
-    el.onclick = ()=>toast(a.name + ' - titik ad-hoc (belum terdaftar)');
-    wrap.appendChild(el);
+    const lat = a.lat || WILAYAH.lat, lng = a.lng || WILAYAH.lng;
+    const icon = L.divIcon({
+      className:'ny-pin'+(newId===a.id?' newPin':''),
+      html: pinAdhocSVG(), iconSize:[30,37], iconAnchor:[15,37]
+    });
+    const m = L.marker([lat, lng], {icon, title:a.name, alt:a.name+' - titik ad-hoc'}).addTo(nyMap);
+    m.on('click', ()=>toast(a.name + ' - titik ad-hoc (belum terdaftar)'));
+    nyMarkers[a.id] = m;
   });
-  const you = document.createElement('div');
-  you.className='you-dot'; you.style.left='150px'; you.style.top='165px';
-  wrap.appendChild(you);
+
   renderTip(GANGS.find(x=>x.id===state.tipGang) || GANGS[0]);
+  setTimeout(()=>nyMap.invalidateSize(), 60);
+}
+function fokusPeta(id){
+  const g = GANGS.find(x=>x.id===id);
+  if(g && nyMap) nyMap.flyTo([g.lat, g.lng], Math.max(nyMap.getZoom(), 16.5), {duration:0.6});
+  const mk = nyMarkers[id];
+  if(mk && nyMap) mk.openTooltip();
 }
 function pinSVG(color,label){
   return `<svg width="34" height="42" viewBox="0 0 34 42"><path d="M17 0C7.6 0 0 7.6 0 17c0 12 17 25 17 25s17-13 17-25C34 7.6 26.4 0 17 0z" fill="${color}"/><circle cx="17" cy="16" r="11" fill="rgba(255,255,255,0.25)"/><text x="17" y="21" font-family="Archivo,sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">${label}</text></svg>`;
@@ -498,7 +573,7 @@ function renderTip(g){
   // kartu mengambang di peta
   document.getElementById('locName').textContent = g.name;
   document.getElementById('locMeta').textContent = g.lapor + ' menit lalu - ' + g.verif + ' warga verifikasi';
-  // kartu gang sekitar (Material 3: tonal container, chip pill, mini-dots)
+  // kartu gang sekitar (Material 3: tonal container, chip pill, mini-dots) — berwarna per status
   const ico = {penuh:'warning', sedang:'clock', bersih:'leaf'};
   document.getElementById('tipCard').innerHTML = GANGS.map(x=>`
     <div class="gang-card${x.id===state.tipGang?' sel':''}" data-status="${x.status}" onclick="pilihPinById('${x.id}')">
@@ -518,7 +593,35 @@ function renderTip(g){
 }
 function pilihPinById(id){
   const g = GANGS.find(x=>x.id===id);
-  if(g){ renderTip(g); toast(`${g.name} - ${STATUS_LABEL[g.status]}`); }
+  if(g){ renderTip(g); fokusPeta(id); bukaDetailGang(id); }
+}
+/* Bottom sheet: detail gang (lokasi laporan & dari siapa) */
+function bukaDetailGang(id){
+  const g = GANGS.find(x=>x.id===id);
+  if(!g) return;
+  const list = laporanGang(g);
+  const baris = list.length ? list.map(x=>`
+    <div class="dg-item">
+      <div class="dg-txt">
+        <div class="dg-lok"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-pin"/></svg>${x.lok}</div>
+        <div class="dg-sub">${x.oleh} - ${waktuMenitLalu(x.menit)}</div>
+      </div>
+      <span class="dg-status">${STATUS_LABEL[x.status]}</span>
+    </div>`).join('') : `<p class="dg-empty">Belum ada laporan di gang ini.</p>`;
+
+  bukaSheet(`
+    <h3>${g.name}</h3>
+    <p class="sub">${g.lapor} menit lalu - ${g.verif} warga verifikasi - status <b>${STATUS_LABEL[g.status]}</b></p>
+
+    <div class="dg-sum">
+      <div class="dg-sum-c"><b>${list.length}</b><span>Titik laporan</span></div>
+      <div class="dg-sum-c"><b>${new Set(list.map(x=>x.oleh)).size}</b><span>Pelapor</span></div>
+      <div class="dg-sum-c"><b>${list.filter(x=>x.status==='penuh').length}</b><span>Penuh</span></div>
+    </div>
+
+    <div class="dg-label">Lokasi laporan &amp; pelapor</div>
+    <div class="dg-list">${baris}</div>
+  `);
 }
 
 /* ---------- FORM LAPOR ---------- */
@@ -568,37 +671,8 @@ function setLokasiObj(nama, from){
   state.laporGeo = {mode:'manual', nama};
   tutupSheet();
 }
-/* Lapor via scan QR tembok (simulasi) */
-function sheetScanQR(){
-  const inputStyle='width:100%;padding:13px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:inherit;font-family:monospace;font-size:13.5px;font-weight:600;outline:none';
-  const contoh = qrLokasi(GANGS[0]);
-  bukaSheet(`<h3>Scan QR Gang</h3><p class="sub">Arahkan kamera ke QR di tembok gang - lokasi terisi otomatis tanpa akun.</p>
-    <div class="field">
-      <label class="field-label" for="qrParse">Kode QR (atau tempel)</label>
-      <input id="qrParse" type="text" placeholder="${contoh}" style="${inputStyle}">
-    </div>
-    <p style="font-size:11.5px;color:var(--teks-muted);margin-top:10px">Contoh kode: <b>${contoh}</b></p>
-    <button class="btn btn-primer btn-lg" style="margin-top:14px" onclick="pakaiQR((document.getElementById('qrParse')||{}).value)">
-      <svg class="ic ic-sm" aria-hidden="true"><use href="#i-qr"/></svg> Gunakan Lokasi dari QR</button>`);
-}
-function pakaiQR(code){
-  const l = parseQR(code) || parseQR(qrLokasi(GANGS[0]));
-  if(!l){ toast('Kode QR tidak dikenali'); return; }
-  state.lokasiPilih = l.name;
-  state.laporGeo = {mode:'qr', nama:l.name, id:l.id};
-  const box = document.getElementById('locBox'); if(box) box.classList.remove('warn');
-  document.getElementById('laporLokasi').textContent = l.name + ', ' + WILAYAH.rw;
-  const src = document.getElementById('locSource');
-  if(src){ src.className='loc-source ok'; src.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> Lokasi dari QR tembok - terverifikasi'; }
-  tutupSheet();
-  toast('Lokasi terisi dari QR: ' + l.name);
-}
 function pilihLokasiSheet(){
   bukaSheet(`<h3>Pilih Lokasi</h3><p class="sub">Pilih gang tempat tumpukan berada</p>
-    <div class="role" style="margin-bottom:12px;border:1.5px dashed var(--hijau-muda)" onclick="sheetScanQR()">
-      <div class="ico" style="background:var(--hijau-muda);color:var(--hijau-tua)"><svg class="ic" aria-hidden="true"><use href="#i-qr"/></svg></div>
-      <div class="txt"><h4>Scan QR di tembok gang</h4><p>Otomatis &amp; tanpa akun - cara tercepat</p></div>
-      <div class="chev"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></div></div>
     ${semuaLokasi().map(l=>`<div class="role" style="margin-bottom:10px" onclick="setLokasi('${l.name}')">
       <div class="ico" style="background:${l.resmi?'var(--hijau-muda)':'var(--kuning-muda)'};color:${l.resmi?'var(--hijau-tua)':'#8A6415'}"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></div>
       <div class="txt"><h4>${l.name}</h4><p>${WILAYAH.rw} - ${l.resmi?'Lokasi resmi':'Titik ad-hoc'}</p></div>
@@ -705,7 +779,7 @@ function renderRiwayat(){
       const st = r.laporStatus || (r.angkut ? 'selesai' : 'menunggu');
       return `
       <div class="list-card">
-        <div class="lc-ico" style="background:${r.angkut?'#DCEFE4':r.status==='penuh'?'#FBEAEA':'#FDF3E2'}" title="Tingkat isi: ${STATUS_LABEL[r.status]}">${r.angkut?ic('truck'):statusDot(r.status)}</div>
+        <div class="lc-ico" style="background:${r.angkut?'#EAF6EE':r.status==='penuh'?'#FBEAEA':'#FDF3E2'}" title="Tingkat isi: ${STATUS_LABEL[r.status]}">${r.angkut?ic('truck'):statusDot(r.status)}</div>
         <div style="flex:1">
           <div class="title"><svg class="ic ic-sm" style="margin-right:5px" aria-hidden="true"><use href="#i-pin"/></svg>${r.gang}</div>
           <div class="meta">${r.angkut?('Selesai '+waktuLalu(r.angkutWaktu)):STATUS_LAPOR[st].ket}</div>
@@ -849,7 +923,7 @@ function renderKontribusi(){
       const ok = state.poin >= a.poin;
       return `<div class="card" style="padding:16px;margin-bottom:13px;${ok?'background:#EAF6EE':'opacity:.72'}">
         <div style="display:flex;align-items:center;gap:13px">
-          <div style="width:52px;height:52px;border-radius:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:${ok?'#EAF6EE':'rgba(128,128,128,0.18)'};color:${ok?'#1E5C42':'var(--abu)'}">
+          <div style="width:52px;height:52px;border-radius:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:${ok?'#EAF6EE':'rgba(128,128,128,0.18)'};color:${ok?'#0E7A4E':'var(--abu)'}">
             <svg class="ic ic-lg" aria-hidden="true"><use href="#i-${ok?'trophy':'lock'}"/></svg>
           </div>
           <div style="flex:1;min-width:0">
