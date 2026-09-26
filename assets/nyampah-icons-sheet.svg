@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="870" viewBox="0 0 1280 870" font-family="Inter, Arial, sans-serif">
+<rect x="0" y="0" width="1280" height="870" fill="#F7F9F7"/>
+<text x="40" y="46" font-size="26" font-weight="800" fill="#12201A" font-family="Archivo, Arial, sans-serif">NYAMPAH - Icon Sheet</text>
+<text x="40" y="70" font-size="14" fill="#5F6F66">34 ikon + 2 logo - drag file ini ke Figma lalu pecah (ungroup) sesuai kebutuhan</text>
+<g>
+<rect x="40" y="110" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(89,132) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M19 12H5M11 6l-6 6 6 6"/>
+</g>
+<text x="105" y="194" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">arrow-left</text>
+</g>
+<g>
+<rect x="190" y="110" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(239,132) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M5 12h14M13 6l6 6-6 6"/>
+</g>
+<text x="255" y="194" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">arrow-right</text>
+</g>
+<g>
+<rect x="340" y="110" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(389,132) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M6 9.5a6 6 0 0 1 12 0c0 4 1.5 6 1.5 6H4.5S6 13.5 6 9.5ZM10.5 19a1.8 1.8 0 0 0 3 0"/>
+</g>
+<text x="405" y="194" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">bell</text>
+</g>
+<g>
+<rect x="490" y="110" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(539,132) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M10 3h4v2.5c2 1 2.5 2.5 2.5 4.5v8a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2v-8C7.5 8 8 6.5 10 5.5V3ZM9 12h6"/>
+</g>
+<text x="555" y="194" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">bottle</text>
+</g>
+<g>
+<rect x="640" y="110" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(689,132) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M3 8.5A2 2 0 0 1 5 6.5h1.4l1.1-1.8A1 1 0 0 1 8.3 4.5h7.4a1 1 0 0 1 .8.2l1.1 1.8H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9Z"/><circle cx="12" cy="13" r="3.4"/>
+</g>
+<text x="705" y="194" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">camera</text>
+</g>
+<g>
+<rect x="790" y="110" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(839,132) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M4 20V4M4 20h16M8 20v-7M12 20V8M16 20v-4M20 20V11"/>
+</g>
+<text x="855" y="194" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">chart</text>
+</g>
+<g>
+<rect x="940" y="110" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(989,132) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M4.5 12.5 9.5 17.5 19.5 7"/>
+</g>
+<text x="1005" y="194" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">check</text>
+</g>
+<g>
+<rect x="1090" y="110" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(1139,132) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.2 11 14.7 15.8 9.5"/>
+</g>
+<text x="1155" y="194" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">check-circle</text>
+</g>
+<g>
+<rect x="40" y="230" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(89,252) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M9 5l7 7-7 7"/>
+</g>
+<text x="105" y="314" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">chevron-right</text>
+</g>
+<g>
+<rect x="190" y="230" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(239,252) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>
+</g>
+<text x="255" y="314" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">clock</text>
+</g>
+<g>
+<rect x="340" y="230" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(389,252) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>
+</g>
+<text x="405" y="314" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">clock-lg</text>
+</g>
+<g>
+<rect x="490" y="230" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(539,252) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h7M14 3l4 2v14l-4 2M14 3v18M16 12h.01"/>
+</g>
+<text x="555" y="314" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">door</text>
+</g>
+<g>
+<rect x="640" y="230" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(689,252) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M2.6 12S6 5.8 12 5.8 21.4 12 21.4 12 18 18.2 12 18.2 2.6 12 2.6 12Z"/><circle cx="12" cy="12" r="2.9"/>
+</g>
+<text x="705" y="314" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">eye</text>
+</g>
+<g>
+<rect x="790" y="230" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(839,252) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9l-6-6ZM13 3v6h6M9 13h6M9 16.5h4"/>
+</g>
+<text x="855" y="314" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">file</text>
+</g>
+<g>
+<rect x="940" y="230" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(989,252) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M3 15c2 0 2.5 1.5 4.5 1.5S10 15 12 15s2.5 1.5 4.5 1.5S19 15 21 15M3 19c2 0 2.5 1.5 4.5 1.5S10 19 12 19s2.5 1.5 4.5 1.5S19 19 21 19M12 3v8M9 8l3 3 3-3"/>
+</g>
+<text x="1005" y="314" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">flood</text>
+</g>
+<g>
+<rect x="1090" y="230" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(1139,252) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<rect x="3.5" y="3.5" width="7" height="7"/><rect x="13.5" y="3.5" width="7" height="7"/><rect x="3.5" y="13.5" width="7" height="7"/><rect x="13.5" y="13.5" width="7" height="7"/>
+</g>
+<text x="1155" y="314" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">grid</text>
+</g>
+<g>
+<rect x="40" y="350" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(89,372) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M4 11 12 4l8 7M6 9.5V20h12V9.5"/>
+</g>
+<text x="105" y="434" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">home</text>
+</g>
+<g>
+<rect x="190" y="350" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(239,372) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/>
+</g>
+<text x="255" y="434" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">info</text>
+</g>
+<g>
+<rect x="340" y="350" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(389,372) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M5 19c0-8 6-13 14-13 0 8-5 14-13 14M5 19c2-3 4-5 7-6.5"/>
+</g>
+<text x="405" y="434" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">leaf</text>
+</g>
+<g>
+<rect x="490" y="350" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(539,372) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.2"/><path d="M12 16.7v1.6"/>
+</g>
+<text x="555" y="434" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">lock</text>
+</g>
+<g>
+<rect x="640" y="350" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(689,372) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M9 4 3 6.5v13L9 17l6 3 6-2.5v-13L15 7 9 4ZM9 4v13M15 7v13"/>
+</g>
+<text x="705" y="434" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">map</text>
+</g>
+<g>
+<rect x="790" y="350" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(839,372) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+</g>
+<text x="855" y="434" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">moon</text>
+</g>
+<g>
+<rect x="940" y="350" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(989,372) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/>
+</g>
+<text x="1005" y="434" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">pin</text>
+</g>
+<g>
+<rect x="1090" y="350" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(1139,372) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M12 5v14M5 12h14"/>
+</g>
+<text x="1155" y="434" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">plus</text>
+</g>
+<g>
+<rect x="40" y="470" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(89,492) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M20 14v.01M14 20h.01M17 20v.01M20 17v4h-4"/>
+</g>
+<text x="105" y="554" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">qr</text>
+</g>
+<g>
+<rect x="190" y="470" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(239,492) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M7 19H4.8a2 2 0 0 1-1.7-3l1.2-2M10 5.2l1.1-1.9a2 2 0 0 1 3.4 0l1.1 1.9M14 14l3 5M17 19h2.2a2 2 0 0 0 1.7-3L19 13M8.5 9 5.5 7M7 19l-2.4-2.2M17 19l2.4-2.2"/>
+</g>
+<text x="255" y="554" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">recycle</text>
+</g>
+<g>
+<rect x="340" y="470" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(389,492) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="13" r="7.5"/><path d="M12 13V9.5M12 13l2.5 2M9.5 2.5h5M12 5.5v-3"/>
+</g>
+<text x="405" y="554" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">stopwatch</text>
+</g>
+<g>
+<rect x="490" y="470" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(539,492) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+</g>
+<text x="555" y="554" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">target</text>
+</g>
+<g>
+<rect x="640" y="470" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(689,492) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>
+</g>
+<text x="705" y="554" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">trend</text>
+</g>
+<g>
+<rect x="790" y="470" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(839,492) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M7 4h10v5a5 5 0 0 1-10 0V4ZM7 5H4.5v1.5A3 3 0 0 0 7 9.4M17 5h2.5v1.5A3 3 0 0 1 17 9.4M12 14v3M9 20h6M10 17h4"/>
+</g>
+<text x="855" y="554" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">trophy</text>
+</g>
+<g>
+<rect x="940" y="470" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(989,492) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M2 6.5h11v10H2zM13 9.5h4l4 3v4h-8M5.5 20a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6ZM17.5 20a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6Z"/>
+</g>
+<text x="1005" y="554" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">truck</text>
+</g>
+<g>
+<rect x="1090" y="470" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(1139,492) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="8" r="3.8"/><path d="M5 20a7 7 0 0 1 14 0"/>
+</g>
+<text x="1155" y="554" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">user</text>
+</g>
+<g>
+<rect x="40" y="590" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(89,612) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M12 4 2.5 20h19L12 4ZM12 10v4M12 17h.01"/>
+</g>
+<text x="105" y="674" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">warning</text>
+</g>
+<g>
+<rect x="190" y="590" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<g transform="translate(239,612) scale(1.3333)" fill="none" stroke="#1F5C42" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M6 6l12 12M18 6 6 18"/>
+</g>
+<text x="255" y="674" font-size="11" fill="#5F6F66" text-anchor="middle" font-family="monospace">x</text>
+</g>
+<g>
+<rect x="40" y="710" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<svg x="85" y="728" width="40" height="40" viewBox="0 0 120 120">
+  
+  <desc>Hexagon berisi pita daur ulang - peta hidup untuk gang yang truk tidak bisa masuk.</desc>
+  <defs>
+    <linearGradient id="nyampahGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12A05C"/>
+      <stop offset="1" stop-color="#0A6B3D"/>
+    </linearGradient>
+    <!-- one arm of the recycle ribbon (band + arrowhead + dark fold); reused 3x rotated 120deg -->
+    <g id="nyampahArm">
+      <path d="M 0.0 44.0 A 44 44 0 0 0 43.3 -7.9 L 22.0 -4.0 A 22 22 0 0 1 0.0 22.0 Z" fill="#8CD04A"/>
+      <path d="M 43.3 -7.9 L 48.5 -26.0 L 27.5 -18.5 Z" fill="#8CD04A"/>
+      <path d="M 0.0 22.0 L 0.0 44.0 L -6.0 40.0 L -5.5 19.5 Z" fill="#3F7A1E"/>
+    </g>
+  </defs>
+  <rect x="0" y="0" width="120" height="120" rx="27" fill="url(#nyampahGrad)"/>
+  <!-- hexagon (sel peta / titik kolaboratif) -->
+  <path d="M60 12 L101 36 L101 84 L60 108 L19 84 L19 36 Z" fill="#FFFFFF"/>
+  <!-- Mobius recycle ribbon -->
+  <g transform="translate(60,60) scale(0.54)">
+    <use href="#nyampahArm" transform="rotate(0)"/>
+    <use href="#nyampahArm" transform="rotate(120)"/>
+    <use href="#nyampahArm" transform="rotate(240)"/>
+  </g>
+</svg>
+<text x="105" y="794" font-size="10" fill="#5F6F66" text-anchor="middle" font-family="monospace">logo-nyampah.svg</text>
+</g>
+<g>
+<rect x="190" y="710" width="130" height="100" rx="16" fill="#FFFFFF" stroke="#E3E2E6" stroke-width="1"/>
+<svg x="235" y="728" width="40" height="40" viewBox="12 6 96 108">
+  
+  <path d="M60 12 L101 36 L101 84 L60 108 L19 84 L19 36 Z" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linejoin="round"/><g transform="translate(60,60) scale(0.54)" fill="currentColor"><g><path d="M 0.0 44.0 A 44 44 0 0 0 43.3 -7.9 L 22.0 -4.0 A 22 22 0 0 1 0.0 22.0 Z"/><path d="M 43.3 -7.9 L 48.5 -26.0 L 27.5 -18.5 Z"/></g><use href="#i-recycle-arm-nyampah" transform="rotate(120)"/><use href="#i-recycle-arm-nyampah" transform="rotate(240)"/></g>
+</svg>
+<text x="255" y="794" font-size="10" fill="#5F6F66" text-anchor="middle" font-family="monospace">logo-nyampah-outline.svg</text>
+</g>
+</svg>
