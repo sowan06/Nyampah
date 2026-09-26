@@ -373,6 +373,58 @@ button,.tab,.role,.feat,.list-card,.chip,.more,.iconbtn,.bell{touch-action:manip
 .dg-status{font-family:'Archivo';font-weight:800;font-size:11.5px;color:var(--teks-muted);white-space:nowrap;}
 .dg-empty{font-size:13px;color:var(--teks-muted);text-align:center;padding:20px 0;}
 
+/* ============ RIWAYAT CARD (Material 3 Expressive) ============ */
+.riw-card{
+  position:relative;border-radius:20px;padding:16px;margin-top:12px;overflow:hidden;
+  background:var(--surface-1);border:none;
+  transition:transform .25s cubic-bezier(.2,0,0,1);
+}
+.riw-card:active{transform:scale(.98);}
+/* tonal container sesuai status penanganan */
+.riw-card[data-st="menunggu"]{background:#FCF3E4;}
+.riw-card[data-st="diproses"]{background:#EAF0F7;}
+.riw-card[data-st="selesai"]{background:#E9F4EE;}
+.riw-card[data-st="ditolak"]{background:#FCEDEB;}
+
+.riw-top{display:flex;align-items:center;gap:13px;}
+.riw-ico{
+  width:46px;height:46px;border-radius:16px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.85);
+}
+.riw-card[data-st="menunggu"] .riw-ico{color:#8A6415;}
+.riw-card[data-st="diproses"] .riw-ico{color:#2C5F8A;}
+.riw-card[data-st="selesai"] .riw-ico{color:var(--hijau);}
+.riw-card[data-st="ditolak"] .riw-ico{color:var(--merah);}
+.riw-ico .ic{width:22px;height:22px;stroke-width:2;}
+.riw-head{flex:1;min-width:0;}
+.riw-head h4{font-family:'Archivo';font-weight:700;font-size:15.5px;color:var(--hitam);line-height:1.2;display:flex;align-items:center;gap:7px;overflow-wrap:anywhere;}
+.riw-head h4 .ic{width:15px;height:15px;color:var(--teks-muted);flex-shrink:0;}
+.riw-head .sub{font-size:11.5px;font-weight:500;color:var(--teks-muted);margin-top:4px;overflow-wrap:anywhere;}
+/* pill status penanganan */
+.riw-pill{
+  display:inline-flex;align-items:center;gap:6px;flex-shrink:0;
+  font-family:'Archivo';font-weight:700;font-size:11px;
+  padding:6px 12px;border-radius:var(--r-pill);
+}
+.riw-card[data-st="menunggu"] .riw-pill{background:rgba(181,130,15,.16);color:#7C5A0E;}
+.riw-card[data-st="diproses"] .riw-pill{background:rgba(44,95,138,.15);color:#2C5F8A;}
+.riw-card[data-st="selesai"] .riw-pill{background:rgba(46,125,91,.16);color:var(--hijau-tua);}
+.riw-card[data-st="ditolak"] .riw-pill{background:rgba(192,57,43,.14);color:#9E3123;}
+.riw-pill .ic{width:13px;height:13px;stroke-width:2.2;}
+/* baris meta bawah: tingkat isi + waktu */
+.riw-foot{display:flex;align-items:center;gap:9px;margin-top:13px;flex-wrap:wrap;}
+.riw-tag{
+  display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;
+  padding:5px 11px;border-radius:var(--r-pill);background:rgba(255,255,255,.78);
+}
+.riw-tag .ic{width:13px;height:13px;stroke-width:2.2;}
+.riw-time{
+  display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:500;
+  color:var(--teks-muted);margin-left:auto;
+}
+.riw-time .ic{width:13px;height:13px;}
+
+
 
 /* ============ ROLE CARD (dipakai halaman Pilih Peran) ============ */
 .role{

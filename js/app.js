@@ -45,6 +45,17 @@ const KRONIS = [
 const STATUS_COLOR = {penuh:'#C0392B', sedang:'#B5820F', bersih:'#0E7A4E'};
 const STATUS_LABEL = {penuh:'Penuh', sedang:'Sedang', bersih:'Bersih'};
 
+/* Tingkat isi laporan warga (dari form: sedikit/sedang/penuh) -> info aman & konsisten */
+const TINGKAT_INFO = {
+  sedikit: {label:'Sedikit', key:'bersih', color:'#0A5C3B', bg:'#E9F4EE', ico:'leaf'},
+  sedang:  {label:'Sedang',  key:'sedang', color:'#7A560C', bg:'#FCF3E4', ico:'clock'},
+  penuh:   {label:'Penuh',   key:'penuh',  color:'#A82E22', bg:'#FCEDEB', ico:'warning'},
+  bersih:  {label:'Bersih',  key:'bersih', color:'#0A5C3B', bg:'#E9F4EE', ico:'leaf'},
+};
+function tingkatInfo(t){
+  return TINGKAT_INFO[t] || TINGKAT_INFO.sedang;
+}
+
 /* ---------- DETAIL LAPORAN PER GANG (untuk popup "Gang Sekitar") ----------
    Mock data: titik laporan (patokan dalam gang) + pelapor + waktu + tingkat.
    Dipakai saat gang diklik -> bottom sheet menampilkan lokasi & dari siapa. */
@@ -115,11 +126,22 @@ function statusDot(s){ return `<span style="display:inline-block;width:9px;heigh
 /* helper ikon SVG */
 function ic(name, cls){ return `<svg class="ic ${cls||''}" aria-hidden="true"><use href="#i-${name}"/></svg>`; }
 
+/* Migrasi data lama: nama gang lama -> nama baru, normalisasi tingkat */
+const GANG_RENAME = {'Gang 3':'Gang Pisang','Gang 5':'Gang Melati','Gang 2':'Gang Mawar','Gang 9':'Gang Jambu'};
+function migrasiLaporan(list){
+  return (list||[]).map(r=>{
+    const rec = {...r};
+    if(GANG_RENAME[rec.gang]) rec.gang = GANG_RENAME[rec.gang];
+    if(!TINGKAT_INFO[rec.status]) rec.status = 'sedang';
+    return rec;
+  });
+}
+
 let state = {
   role:null,
   user:null,
   activeView:'v-splash',
-  laporan: load('nyampah_laporan', []),
+  laporan: migrasiLaporan(load('nyampah_laporan', [])),
   notif: load('nyampah_notif', []),
   laporRT: load('nyampah_laporkan_rt', []),
   akun: load('nyampah_akun', []),
@@ -774,24 +796,38 @@ function renderRiwayat(){
     el.innerHTML = `<div class="empty"><div class="em"><svg class="ic" style="width:56px;height:56px" aria-hidden="true"><use href="#i-clock"/></svg></div><h4>Belum ada laporan</h4>
       <p>Laporan yang kamu kirim akan muncul di sini.</p>
       <button class="btn btn-primer" style="max-width:220px;margin-top:6px" onclick="show('v-peta')">Lihat Peta</button></div>`;
-  } else {
-    el.innerHTML = state.laporan.map(r=>{
-      const st = r.laporStatus || (r.angkut ? 'selesai' : 'menunggu');
-      return `
-      <div class="list-card">
-        <div class="lc-ico" style="background:${r.angkut?'#EAF6EE':r.status==='penuh'?'#FBEAEA':'#FDF3E2'}" title="Tingkat isi: ${STATUS_LABEL[r.status]}">${r.angkut?ic('truck'):statusDot(r.status)}</div>
-        <div style="flex:1">
-          <div class="title"><svg class="ic ic-sm" style="margin-right:5px" aria-hidden="true"><use href="#i-pin"/></svg>${r.gang}</div>
-          <div class="meta">${r.angkut?('Selesai '+waktuLalu(r.angkutWaktu)):STATUS_LAPOR[st].ket}</div>
-          <div style="display:flex;gap:6px;align-items:center;margin-top:7px;flex-wrap:wrap">
-            ${badgeLapor(st)}
-            <span style="font-size:10.5px;color:var(--teks-muted)">Tingkat: <b style="color:${STATUS_COLOR[r.status]}">${STATUS_LABEL[r.status]}</b></span>
-            <span style="font-size:10.5px;color:var(--teks-muted)">- ${waktuLalu(r.waktu)}</span>
-          </div>
-        </div>
-      </div>`;
-    }).join('');
+    return;
   }
+  const total = state.laporan.length;
+  const selesai = state.laporan.filter(r=>r.angkut || r.laporStatus==='selesai').length;
+  const ringkasan = `
+    <div class="stat-grid" style="margin-top:4px">
+      <div class="stat s1"><div class="num">${total}</div><div class="lbl">Total Laporan</div></div>
+      <div class="stat s2"><div class="num">${selesai}</div><div class="lbl">Sudah Diangkut</div></div>
+    </div>
+    <div class="section-title">Daftar Laporan</div>`;
+
+  el.innerHTML = ringkasan + state.laporan.map(r=>{
+    const st = r.laporStatus || (r.angkut ? 'selesai' : 'menunggu');
+    const m = STATUS_LAPOR[st] || STATUS_LAPOR.menunggu;
+    const t = tingkatInfo(r.status);
+    const waktuLabel = r.angkut ? ('Diangkut ' + waktuLalu(r.angkutWaktu)) : m.ket;
+    return `
+    <div class="riw-card" data-st="${st}">
+      <div class="riw-top">
+        <div class="riw-ico" aria-hidden="true"><svg class="ic"><use href="#i-${m.ico}"/></svg></div>
+        <div class="riw-head">
+          <h4><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>${r.gang}</h4>
+          <div class="sub">${waktuLabel}</div>
+        </div>
+        <span class="riw-pill"><svg class="ic" aria-hidden="true"><use href="#i-${m.ico}"/></svg>${m.label}</span>
+      </div>
+      <div class="riw-foot">
+        <span class="riw-tag" style="color:${t.color}"><svg class="ic" aria-hidden="true"><use href="#i-${t.ico}"/></svg>Tingkat: ${t.label}</span>
+        <span class="riw-time"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>${waktuLalu(r.waktu)}</span>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 /* ---------- PROFIL ---------- */
